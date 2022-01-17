@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: ./api
+      args:
+        JOBS_NUMBER: $JOBS_NUMBER
+        WORKDIR: $WORKDIR
+    command: ash -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      MYSQL_USER_NAME: $MYSQL_USER_NAME
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      RAILS_ENV: $RAILS_ENV
+    volumes:
+      - "./api:/$WORKDIR"
+    depends_on:
+      - db
+    ports:
+      - "$API_PORT:$CONTAINER_PORT"
+    tty: true
+    stdin_open: true
+
+  db:
+    image: mysql:8.0.27
+    environment:
+      TZ: UTC
+      MYSQL_USER_NAME: $MYSQL_USER_NAME
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    ports:
+      - "4306:3306"
+    volumes:
+      - "./containers/mysql/conf.d:/etc/mysql/conf.d"
+      - "medcool-mysql-data:/var/lib/mysql"
+
+  front:
+    build:
+      context: ./front
+      args:
+        WORKDIR: $WORKDIR
+        CONTAINER_PORT: $CONTAINER_PORT
+    command: npm run dev
+    volumes:
+      - "./front:/$WORKDIR"
+    ports:
+      - "$FRONT_PORT:$CONTAINER_PORT"
+    depends_on:
+      - api
+
+volumes:
+  medcool-mysql-data:
+    driver: local
