@@ -1,7 +1,36 @@
 # common
 .env
-
 .vscode
+
+# nuxtjs
+front/logs
+front/*.log
+front/npm-debug.log*
+front/yarn-debug.log*
+front/yarn-error.log*
+front/pids
+front/*.pid
+front/*.seed
+front/*.pid.lock
+front/lib-cov
+coverage
+front/.nyc_output
+front/.grunt
+front/bower_components
+front/.lock-wscript
+front/build/Release
+front/node_modules/
+front/jspm_packages/
+front/typings/
+front/.npm
+front/.eslintcache
+front/.node_repl_history
+# Output of 'npm pack'
+front/*.tgz
+front/.cache
+front/.next
+front/.nuxt
+front/dist
 
 # rails
 # See https://help.github.com/articles/ignoring-files for more about ignoring /.bundle
@@ -9,8 +38,7 @@ api/log/*
 api/tmp/*
 !api/log/.keep
 !api/tmp/.keep
-api//tmp/pids/*
-!api/tmp/pids/
+api/tmp/pids/*
 !api/tmp/pids/.keep
 api/storage/*
 !api/storage/.keep
