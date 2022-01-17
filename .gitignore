@@ -18,3 +18,4 @@ api/tmp/storage/*
 !api/tmp/storage/
 !api/tmp/storage/.keep
 api/config/master.key
+api/.bundle
