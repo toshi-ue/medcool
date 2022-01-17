@@ -1,0 +1,12 @@
+{
+	"generators": {
+		"2e27d554": {
+			"type": "local",
+			"path": "/medcool/.npm/_npx/ea7c6e7510ea3309/node_modules/create-nuxt-app/lib",
+			"hash": "2e27d554"
+		}
+	},
+	"answers": {
+		"2e27d554__npm__": {}
+	}
+}
