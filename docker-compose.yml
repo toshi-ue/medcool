@@ -5,6 +5,7 @@ services:
     build:
       context: ./api
       args:
+        WITHOUT_RAILS_ENV: $WITHOUT_RAILS_ENV
         JOBS_NUMBER: $JOBS_NUMBER
         WORKDIR: $WORKDIR
     command: ash -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
