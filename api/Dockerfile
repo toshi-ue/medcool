@@ -1,4 +1,4 @@
-FROM ruby:3.1.0-alpine
+FROM ruby:3.0.3-alpine
 ARG DEV_PACKAGES="build-base curl-dev"
 ARG WITHOUT_RAILS_ENV
 ARG JOBS_NUMBER
