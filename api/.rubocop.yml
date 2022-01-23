@@ -56,7 +56,10 @@ Security:
 Style:
   Enabled: true
 
-
+Style/ClassAndModuleChildren:
+  EnforcedStyle: 'compact'
+  # Exclude:
+  #   - 'app/controllers/**/*.rb'
 # Excluded Files
 # Layout/EmptyLines:
 #   Exclude:
@@ -135,6 +138,9 @@ Style:
 # RSpec/ExpectActual:
 #   Exclude:
 #     - spec/routing/**/*
+
+RSpec/FilePath:
+  Enabled: false
 
 # Style/ClassAndModuleChildren:
 #   Exclude:
