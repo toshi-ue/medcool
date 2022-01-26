@@ -25,9 +25,7 @@
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": false,
+    "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
       "~/*": [
@@ -45,12 +43,13 @@
       "node_modules/@types"
     ],
     "types": [
-      "@nuxtjs/axios",
-      "@nuxt/types",
-      "@nuxtjs/vuetify",
       // https://zenn.dev/fuqda/articles/a4d0bd213bf868
       "@types/jest",
-      "@types/node"
+      "@types/node",
+      // [Setup - Axios Module](https://axios.nuxtjs.org/setup/#typescript)
+      "@nuxt/types",
+      "@nuxtjs/axios",
+      "@nuxtjs/vuetify",
     ]
   },
   "exclude": [

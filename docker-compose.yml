@@ -16,7 +16,7 @@ services:
       RAILS_ENV: $RAILS_ENV
     volumes:
       # [Docker for Mac が遅い(怒) - 箱のプログラミング日記。](https://www.y-hakopro.com/entry/2021/07/11/175236#:~:text=%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F%E3%80%82-,delegeted%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E4%BD%BF%E7%94%A8,-%E8%AA%BF%E3%81%B9%E3%81%9F%E3%81%A8%E3%81%93%E3%82%8D)
-      - "./api:/$WORKDIR:delegated"
+      - "./api:/$WORKDIR"
     depends_on:
       - db
     ports:
@@ -45,7 +45,7 @@ services:
         WORKDIR: $WORKDIR
     command: npm run dev
     volumes:
-      - "./front:/$WORKDIR:delegated"
+      - "./front:/$WORKDIR"
     ports:
       - "$FRONT_PORT:$CONTAINER_PORT"
     depends_on:

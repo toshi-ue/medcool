@@ -3,17 +3,18 @@
 // [nuxt-community/typescript-template: Typescript starter with Nuxt.js](https://github.com/nuxt-community/typescript-template)
 import type { NuxtConfig } from '@nuxt/types'
 // [Cannot find module 'vuetify/lib/util/colors' in nuxt.config.js · Issue #101 · nuxt-community/vuetify-module](https://github.com/nuxt-community/vuetify-module/issues/101#issuecomment-703049802)
-// import colors from 'vuetify/es5/util/colors.js';
-import colors from 'vuetify/src/util/colors'
+import colors from 'vuetify/es5/util/colors'
+// import colors from 'vuetify/src/util/colors'
 
 const config: NuxtConfig = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
+  // [Nuxt+TS+CompositionAPI+Vercel+VSCodeのセットアップ手順](https://zenn.dev/sasigume/articles/nuxt-ts-composition-vercel#ogp%E8%A8%AD%E5%AE%9A)
   head: {
-    titleTemplate: '%s | MedCool',
-    title: 'app',
+    titleTemplate: ' ここにページの概要 | %s',
+    title: 'MedCool',
     htmlAttrs: {
       lang: 'en'
     },
@@ -31,7 +32,8 @@ const config: NuxtConfig = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/axios'
+    // '@/plugins/axios'
+    '@/plugins/composition-api'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -41,15 +43,17 @@ const config: NuxtConfig = {
   buildModules: [
     // [Nuxt2系へのtypescript及びcomposition-apiの導入 | スマートショッピング](https://tech.smartshopping.co.jp/composition-api#:~:text=%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82-,3.composition%2Dapi%E5%B0%8E%E5%85%A5,-%E3%81%95%E3%81%A6%E3%80%81%E3%81%84%E3%82%88%E3%81%84%E3%82%88composition)
     // '@/plugins/composition-api',
-    // [Nuxt.js + TypeScript + Composition APIで作るSPA - Qiita](https://qiita.com/mmclsntr/items/15acb44ab1746f097a89#composition-api%E3%81%AE%E5%B0%8E%E5%85%A5)
-    '@nuxtjs/composition-api/module',
+    // [既存のNuxtプロジェクトにESLintを導入する方法 | tns-blog](https://tns-blog.com/312)
+    '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     // [Introduction](https://typed-vuex.roe.dev/)
     // [Vuexの代わりにnuxt-typed-vuexを用いて型の恩恵を受ける🏦 - Qiita](https://qiita.com/y-temp4/items/08e131b8b053f401d996)
-    'nuxt-typed-vuex'
+    'nuxt-typed-vuex',
+    // [Nuxt.js + TypeScript + Composition APIで作るSPA - Qiita](https://qiita.com/mmclsntr/items/15acb44ab1746f097a89#composition-api%E3%81%AE%E5%B0%8E%E5%85%A5)
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
