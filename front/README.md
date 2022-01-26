@@ -66,3 +66,19 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+### 方針(以下から選ぶ)
+[Vue + JSX + Nuxt Composition API で最高のフロント開発体験 - ANDPAD Tech Blog](https://tech.andpad.co.jp/entry/2021/07/01/170000)
+[スタートアップCTOがVue3とVue2の違い・Vue3の注目機能を分かりやすくまとめ🙌！Vue3の導入を悩んでいるなら必見です👀 | Ragate ブログ](https://www.ragate.co.jp/blog/articles/8232)
+[Nuxt Composition API](https://composition-api.nuxtjs.org/)
+
+Composition APIのざっくりとした書き方(TypeScriptなし)
+[Vue 3の新しい機能と変更点・全11件 – console dot log](https://blog.capilano-fw.com/?p=6393#Composition_API)
+[Vue3のCompositionAPIの単体テスト方法を解説！CompositionAPI・TypeScript・UnitTestで堅牢開発 | Ragate ブログ](https://www.ragate.co.jp/blog/articles/10998)
+[【Nuxt.js】axiosのAPI共通処理をラップし、Repositoryパターンを実現する(TypeScript) | SAGA.TXT](https://sagatto.com/20201229_nuxt_axios_ts_repository#:~:text=%EF%BC%93%EF%BC%8E-,onError%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%80%81%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8B%E3%82%89%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%8C%E8%BF%94%E3%81%A3%E3%81%A6%E3%81%8D%E3%81%9F%E6%99%82%E3%81%AE%E5%87%A6%E7%90%86%E3%82%92%E8%A8%98%E8%BC%89%E3%81%99%E3%82%8B%E3%80%82,-%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%82%E3%82%8C)
+[Nuxt3ベータ版で見るNuxt2との違うところ – WebTecNote](https://tenderfeel.xsrv.jp/javascript/5972/)
+[Nuxt(vue) + TypeScriptをはじめるときに知っておきたかった10のこと](https://zenn.dev/nus3/articles/ec0db8857209a509646b)
+[Nuxt.js + TypeScript + Composition APIで作るSPA | iret.media](https://cloudpack.media/60694)
+[nuxt-composition-apiを使えるようにする | cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2020-07-13-nuxt-composition-api/)
+[Nuxt Composition API 備忘録](https://zenn.dev/matsu7089/scraps/fe34f312cc4ff9)
+[Nuxt 3 を今すぐオススメしたい 15 のポイント](https://zenn.dev/ytr0903/articles/d0a91f6180d34e)
