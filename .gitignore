@@ -36,6 +36,7 @@ front/dist
 # See https://help.github.com/articles/ignoring-files for more about ignoring /.bundle
 .ruby-version
 api/.bundle
+api/.cache
 api/config/master.key
 api/coverage
 api/log/*

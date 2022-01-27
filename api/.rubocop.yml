@@ -12,14 +12,16 @@ require:
 AllCops:
   DisabledByDefault: true
   Exclude:
-    - bin/*
+    # - bin/*
     - db/schema.rb
+    - Gemfile.lock
     - node_modules/**/*
     - vendor/**/*
     - tmp/**/*
     - .git/**/*
   NewCops: enable
   # TargetRailsVersion: ~
+  TargetRailsVersion: 3.0.3
 
 Bundler:
   Enabled: true
@@ -54,7 +56,10 @@ Security:
 Style:
   Enabled: true
 
-
+Style/ClassAndModuleChildren:
+  EnforcedStyle: 'compact'
+  # Exclude:
+  #   - 'app/controllers/**/*.rb'
 # Excluded Files
 # Layout/EmptyLines:
 #   Exclude:
@@ -79,6 +84,12 @@ Style:
 # Layout/SpaceInsidePercentLiteralDelimiters:
 #   Exclude:
 #     - 'Gemfile'
+
+# Lint/Syntax は false, Exclude の対象にしてはいけない
+# doc: https://docs.rubocop.org/rubocop/configuration.html#:~:text=non%2Dzero%20value.-,There%20is%20one%20exception%20from%20the%20general%20rule%20above%20and%20that%20is%20Lint/Syntax,-%2C%20a%20special%20cop
+# Lint/Syntax:
+#   Exclude:
+#     - 'Gemfile.lock'
 
 # Naming/PredicateName:
 #   Exclude:
@@ -128,16 +139,20 @@ Style:
 #   Exclude:
 #     - spec/routing/**/*
 
+RSpec/FilePath:
+  Enabled: false
+
 # Style/ClassAndModuleChildren:
 #   Exclude:
 #     - 'test/channels/application_cable/connection_test.rb'
 #     - 'test/test_helper.rb'
 
-# Style/Documentation:
-#   Exclude:
+Style/Documentation:
+  Enabled: false
+  # Exclude:
 #     - 'spec/**/*'
 #     - 'test/**/*'
-#     - 'config/application.rb'
+    # - 'config/application.rb'
 
 # Style/DocumentationMethod:
 #   Exclude:
