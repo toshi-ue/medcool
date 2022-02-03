@@ -1,11 +1,7 @@
 <template>
   <!-- TODO: 最後にレスポンシブ対応する -->
   <!-- <div class="hidden-sm-and-down"> -->
-  <v-bottom-navigation
-    :value="value"
-    color="primary"
-    grow
-  >
+  <v-bottom-navigation :value="value" color="primary" grow>
     <v-btn>
       <span>Recents</span>
 
@@ -25,13 +21,13 @@
     </v-btn>
   </v-bottom-navigation>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-
-export default defineComponent({
-  setup() {
-    const value = ref(undefined)
-    return { value }
-  }
-})
+<script>
+export default {
+  name: 'AppBottomNavigation',
+  data() {
+    return {
+      value: undefined,
+    }
+  },
+}
 </script>

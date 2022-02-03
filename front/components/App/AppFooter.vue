@@ -4,17 +4,19 @@
   <div>
     <v-footer class="d-flex justify-center">
       <!-- <span>&copy; {{ new Date().getFullYear() }} ~ </span> -->
-      <span>&copy; 2022 ~ {{ $appName }}</span>
+      <span>&copy; 2022 ~ {{ $config.APP_NAME }}</span>
     </v-footer>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
-
-export default defineComponent({
-  setup() {
-    //
-  }
-})
+<script>
+export default {
+  name: 'AppFooter',
+  data() {
+    return {}
+  },
+  mounted() {
+    console.log(this.$config.APP_NAME)
+  },
+}
 </script>

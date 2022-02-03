@@ -35,8 +35,6 @@
       <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-toolbar-title v-text="$appName" />
       <app-title />
       <v-spacer />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
@@ -52,9 +50,7 @@
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+            <v-icon light> mdi-repeat </v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
@@ -68,53 +64,44 @@
   </v-app>
 </template>
 
-<script lang="ts">
-// [Nuxt.js + TypeScript + Composition APIで作るSPA - Qiita](https://qiita.com/mmclsntr/items/15acb44ab1746f097a89#layoutsdefaultvue-%E3%81%AEtypescript--composition-api%E5%8C%96)
-import { defineComponent, ref, SetupContext } from '@nuxtjs/composition-api'
-// https://stackoverflow.com/questions/58474763/nuxt-typescript-error-nuxttypescript-cannot-find-module-my-module
-// import AppFooter from '@/components/App/AppFooter'
+<script>
 import AppBottomNavigation from '@/components/App/AppBottomNavigation.vue'
 import AppFooter from '@/components/App/AppFooter.vue'
 import AppTitle from '@/components/App/AppTitle.vue'
 
-interface Item{
-  icon: string,
-  title: string,
-  to: string
-}
-
-export default defineComponent({
+export default {
   name: 'DefaultLayout',
   components: {
     AppBottomNavigation,
     AppFooter,
-    AppTitle
+    AppTitle,
   },
-  setup (_, context: SetupContext) {
-    // console.log(context.root.$appName)
-    const clipped = ref(false)
-    const drawer = ref(false)
-    // const fixed = ref(false)
-    const items = ref<Item[]>([
-      {
-        icon: 'mdi-apps',
-        title: 'Welcome',
-        to: '/'
-      },
-      {
-        icon: 'mdi-chart-bubble',
-        title: 'Inspire',
-        to: '/inspire'
-      }
-    ])
-    const miniVariant = ref(false)
-    const right = ref(true)
-    const rightDrawer = ref(false)
-    // const title = ref('Vuetify.js')
-    const title = ref(context.root.$appName)
-
-    // return { clipped, drawer, fixed, items, miniVariant, right, rightDrawer, title }
-    return { clipped, drawer, items, miniVariant, right, rightDrawer, title }
-  }
-})
+  data() {
+    return {
+      clipped: false,
+      drawer: false,
+      fixed: false,
+      items: [
+        {
+          icon: 'mdi-apps',
+          title: 'Welcome',
+          to: '/',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire',
+        },
+      ],
+      miniVariant: false,
+      right: true,
+      rightDrawer: false,
+    }
+  },
+  // computed: {
+  //   APP_NAME: () => {
+  //     return this.$APP_NAME
+  //   },
+  // },
+}
 </script>
