@@ -43,9 +43,11 @@ services:
         API_URL: "http://localhost:$API_PORT"
         CONTAINER_PORT: $CONTAINER_PORT
         WORKDIR: $WORKDIR
-    command: npm run dev
+    command: yarn dev
     volumes:
       - "./front:/$WORKDIR"
+      # [dockerでyarn addすると遅い問題を改善する - Qiita](https://qiita.com/MoguraStore/items/432be06fb333d6158eb1#%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%AE%E6%8C%87%E5%AE%9A%E6%96%B9%E6%B3%95)
+      - "yarn-cache:/usr/local/share/.cache/yarn/v2"
     ports:
       - "$FRONT_PORT:$CONTAINER_PORT"
     depends_on:
@@ -53,4 +55,6 @@ services:
 
 volumes:
   medcool-mysql-data:
+    driver: local
+  yarn-cache:
     driver: local

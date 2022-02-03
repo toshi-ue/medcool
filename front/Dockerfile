@@ -7,8 +7,14 @@ ENV HOME=/${WORKDIR} \
   LANG=C.UTF-8 \
   TZ=Asia/Tokyo \
   HOST=0.0.0.0 \
+  YARN_VERSION=1.22.15 \
   API_URL=${API_URL}
 
 WORKDIR ${HOME}
 
-# EXPOSE ${CONTAINER_PORT}
+COPY package*.json ./
+RUN yarn install
+
+COPY . ./
+
+RUN yarn run build
