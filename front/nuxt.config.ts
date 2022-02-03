@@ -32,8 +32,11 @@ const config: NuxtConfig = {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/axios.js',
-    '@/plugins/composition-api'
+    '@/plugins/axios',
+    // '@/plugins/composition-api',
+    '@/plugins/constants',
+    '@/plugins/firebase2'
+    // '@/plugins/firebase_without_typescript'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -68,7 +71,6 @@ const config: NuxtConfig = {
     // 環境変数にAPI_URLが存在する場合axiosのbaseURLは自動で設定・優先される(Dockerfileから参照される)
     // baseURL: '/',
   },
-
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -89,7 +91,26 @@ const config: NuxtConfig = {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+  // Set Runtime Configuration: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
+  // firebaseでうまく連携できないため今回は@nuxtjs/dotenvを使用する
+  // https://github.com/koduki/example-nuxt/blob/main/nuxt.config.js
+  // https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
+  // https://zenn.dev/tai_hatake/articles/c0d754bb7ae230#2.-%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E4%BD%BF%E3%81%86
+  publicRuntimeConfig: {
+    firebase: {
+      apiKey: process.env.FIREBASE_API_KEY,
+      appId: process.env.FIREBASE_APP_ID,
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+      measurementId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET
+      // services: {
+      //   auth: true
+      // }
+    }
+  }
 }
 
 export default config
