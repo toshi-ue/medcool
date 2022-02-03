@@ -43,12 +43,12 @@
       "node_modules/@types"
     ],
     "types": [
+      "@nuxt/types",
+      // [Setup - Axios Module](https://axios.nuxtjs.org/setup/#typescript)
+      "@nuxtjs/axios",
+      "@types/node",
       // https://zenn.dev/fuqda/articles/a4d0bd213bf868
       "@types/jest",
-      "@types/node",
-      // [Setup - Axios Module](https://axios.nuxtjs.org/setup/#typescript)
-      "@nuxt/types",
-      "@nuxtjs/axios",
       "@nuxtjs/vuetify",
     ]
   },

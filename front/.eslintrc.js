@@ -20,6 +20,8 @@ module.exports = {
     // 'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
     // 'space-before-function-paren': ['error']
     // [既存のNuxtプロジェクトにESLintを導入する方法 | tns-blog](https://tns-blog.com/312)
-    'space-before-function-paren': 0
+    'space-before-function-paren': 0,
+    // https://www.codegrepper.com/code-examples/whatever/ESLint%3A+Cannot+read+property+%27loc%27+of+undefined+Occurred+while
+    '@typescript-eslint/indent': ['error', 2]
   }
 }

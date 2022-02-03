@@ -90,23 +90,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, useContext } from '@nuxtjs/composition-api'
+import { defineComponent, onMounted, ref, useContext } from '@nuxtjs/composition-api'
+// import $fire from '~/plugins/firebase3'
+// import firebase from '~/plugins/firebase_without_typescript'
 
 export default defineComponent({
   setup () {
-    // [javascript - How to use $axios Nuxt module inside of setup() from composition API? - Stack Overflow](https://stackoverflow.com/questions/67393513/how-to-use-axios-nuxt-module-inside-of-setup-from-composition-api)
-    const { $axios } = useContext()
+    //
+    const { $axios, $firebase } = useContext()
     // [vue.js - How to set up Vue 3 Composition API (Typescript) to push user-inputted value to array - Stack Overflow](https://stackoverflow.com/questions/70728551/how-to-set-up-vue-3-composition-api-typescript-to-push-user-inputted-value-to)
     const msgs = ref<string[]>([])
 
     const getMsg = async (): Promise<void> => {
-      // msgs.value = await $axios.$get('api/v1/users')
-      // msgs.value.push(await $axios.$get('api/v1/users'))
       await $axios.get('api/v1/users').then((res) => {
         msgs.value.push(res.data)
       })
     }
 
+    onMounted(() => {
+      // eslint-disable-next-line no-console
+      console.log($firebase)
+      // console.log($fire.auth)
+    })
     return {
       msgs, getMsg
     }

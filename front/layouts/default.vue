@@ -36,6 +36,8 @@
         <v-icon>mdi-minus</v-icon>
       </v-btn>
       <v-toolbar-title v-text="title" />
+      <v-toolbar-title v-text="$appName" />
+      <app-title />
       <v-spacer />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
@@ -58,15 +60,22 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-footer :absolute="!fixed" app>
+    <!-- <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+    </v-footer> -->
+    <app-bottom-navigation />
+    <app-footer />
   </v-app>
 </template>
 
 <script lang="ts">
 // [Nuxt.js + TypeScript + Composition APIで作るSPA - Qiita](https://qiita.com/mmclsntr/items/15acb44ab1746f097a89#layoutsdefaultvue-%E3%81%AEtypescript--composition-api%E5%8C%96)
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { defineComponent, ref, SetupContext } from '@nuxtjs/composition-api'
+// https://stackoverflow.com/questions/58474763/nuxt-typescript-error-nuxttypescript-cannot-find-module-my-module
+// import AppFooter from '@/components/App/AppFooter'
+import AppBottomNavigation from '@/components/App/AppBottomNavigation.vue'
+import AppFooter from '@/components/App/AppFooter.vue'
+import AppTitle from '@/components/App/AppTitle.vue'
 
 interface Item{
   icon: string,
@@ -76,11 +85,16 @@ interface Item{
 
 export default defineComponent({
   name: 'DefaultLayout',
-  components: {},
-  setup () {
+  components: {
+    AppBottomNavigation,
+    AppFooter,
+    AppTitle
+  },
+  setup (_, context: SetupContext) {
+    // console.log(context.root.$appName)
     const clipped = ref(false)
     const drawer = ref(false)
-    const fixed = ref(false)
+    // const fixed = ref(false)
     const items = ref<Item[]>([
       {
         icon: 'mdi-apps',
@@ -96,9 +110,11 @@ export default defineComponent({
     const miniVariant = ref(false)
     const right = ref(true)
     const rightDrawer = ref(false)
-    const title = ref('Vuetify.js')
+    // const title = ref('Vuetify.js')
+    const title = ref(context.root.$appName)
 
-    return { clipped, drawer, fixed, items, miniVariant, right, rightDrawer, title }
+    // return { clipped, drawer, fixed, items, miniVariant, right, rightDrawer, title }
+    return { clipped, drawer, items, miniVariant, right, rightDrawer, title }
   }
 })
 </script>

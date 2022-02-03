@@ -83,3 +83,14 @@ Composition APIのざっくりとした書き方(TypeScriptなし)
 [Nuxt Composition API 備忘録](https://zenn.dev/matsu7089/scraps/fe34f312cc4ff9)
 [Nuxt 3 を今すぐオススメしたい 15 のポイント](https://zenn.dev/ytr0903/articles/d0a91f6180d34e)
 [Nuxt(vue) + TypeScriptをはじめるときに知っておきたかった10のこと](https://zenn.dev/nus3/articles/ec0db8857209a509646b)
+
+Nuxt Firebase Authenticationの設定
+[Introduction - Nuxt Firebase](https://firebase.nuxtjs.org/)
+[Nuxt + Rails + Firebase ユーザー登録 (Nuxt編) | tns-blog](https://tns-blog.com/222)
+[Firebase Authentication と NUXT（vue.js）で簡単にユーザー登録＆認証を作成する ｜ Metrocode.co](https://www.metrocode.co/blog/post/firebase-authentication-nuxt-vuejs)
+
+Firebase Authentication
+[Firebase Authentication  |  Firebase Documentation](https://firebase.google.com/docs/auth?authuser=2)
+Firebase Authenticationのサンプルアプリ
+[Firebase](https://firebase.google.com/docs/samples?authuser=2)
+[Nuxt.js(CompositionAPI)+TypeScriptでFirebaseと連携したい！](https://zenn.dev/kojinishimura/articles/87aae239571fb4)
