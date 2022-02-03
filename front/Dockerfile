@@ -13,8 +13,12 @@ ENV HOME=/${WORKDIR} \
 WORKDIR ${HOME}
 
 COPY package*.json ./
-RUN yarn install
+
+RUN apk update && \
+  apk upgrade && \
+  npm install npm@8.1.2 && \
+  npm install npm install -g @vue/cli@4.5.15 nuxt@2.15.8 create-nuxt-app@4.0.0
 
 COPY . ./
 
-RUN yarn run build
+CMD ["yarn","run", "build"]
