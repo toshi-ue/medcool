@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+// import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -24,7 +24,12 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/axios'],
+  plugins: [
+    // '~/plugins/axios'でもよい
+    '@/plugins/axios',
+    '@/plugins/firebase',
+    '@/plugins/firebase.authentication',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -55,22 +60,30 @@ export default {
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
+    // theme: {
+    //   dark: true,
+    //   themes: {
+    //     dark: {
+    //       primary: colors.blue.darken2,
+    //       accent: colors.grey.darken3,
+    //       secondary: colors.amber.darken3,
+    //       info: colors.teal.lighten1,
+    //       warning: colors.amber.base,
+    //       error: colors.deepOrange.accent4,
+    //       success: colors.green.accent3,
+    //     },
+    //   },
+    // },
+  },
+  // FIXME: ソースコードの変更が反映されない(少しされるようになった)?
+  // もし1つ目でダメなら2つ目のリンクを参考にする
+  // [dockerコンテナ上のnuxt.jsアプリでhot reloadを有効にする](https://sunday-morning.app/posts/2020-11-30-docker-nuxt-js-hot-reload)
+  // [Nuxt.js 開発サーバーでのSSEがランダムポートになって困ってた « LANCARD.LAB｜ランカードコムのスタッフブログ](https://www.lancard.com/blog/2020/06/30/nuxt-js-%E9%96%8B%E7%99%BA%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E3%81%AEsse%E3%81%8C%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%9D%E3%83%BC%E3%83%88%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E5%9B%B0/)
+  watchers: {
+    webpack: {
+      poll: true,
     },
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
   // Nuxt configuration file: https://nuxtjs.org/docs/directory-structure/nuxt-config#runtimeconfig
