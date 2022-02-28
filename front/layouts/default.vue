@@ -1,5 +1,6 @@
 <template>
-  <v-app dark>
+  <!-- <v-app dark> -->
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
@@ -98,10 +99,23 @@ export default {
       rightDrawer: false,
     }
   },
-  // computed: {
-  //   APP_NAME: () => {
-  //     return this.$APP_NAME
-  //   },
-  // },
 }
 </script>
+<style>
+/*
+FIXME:
+layout側でstyle属性を指定しても全体に反映されない
+逆にcomponent側で指定すると全体に適用される
+*/
+
+/*
+nuxtlink a:link change color で検索
+https://nuxtjs.org/examples/routing/active-link-classes/
+*/
+
+/* a.nuxt-link-active,
+a.nuxt-link-exact-active {
+  color: white;
+  text-decoration: none;
+} */
+</style>
