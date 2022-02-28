@@ -4,15 +4,13 @@ module.exports = {
   settings: {
     "vetur.useWorkspaceDependencies": true,
     // [Vetur error 2300 duplicate identifier '(missing)' ( Javascript, Typescript ) | howtofix.io](https://howtofix.io/vetur-error-2300-duplicate-identifier-missing-id730888)
-    'vetur.experimental.templateInterpolationService': false
+    "vetur.experimental.templateInterpolationService": false,
   },
-  projects: [{
-    globalComponents: [
-      './front/src/components/**/*.vue'
-    ],
-    package: './front/package.json',
-    root: './',
-    // snippetFolder: './.vscode/vetur/snippets',
-    tsconfig: './front/tsconfig.json',
-  }],
-}
+  projects: [
+    {
+      globalComponents: ["./front/src/components/**/*.vue"],
+      package: "./front/package.json",
+      root: "./",
+    },
+  ],
+};

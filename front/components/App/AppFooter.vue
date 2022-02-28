@@ -4,7 +4,9 @@
   <div>
     <v-footer class="d-flex justify-center">
       <!-- <span>&copy; {{ new Date().getFullYear() }} ~ </span> -->
-      <span>&copy; 2022 ~ {{ $config.APP_NAME }}</span>
+      <nuxt-link to="/">
+        <span>&copy; 2022 ~ {{ $config.APP_NAME }}</span>
+      </nuxt-link>
     </v-footer>
   </div>
 </template>
@@ -14,9 +16,6 @@ export default {
   name: 'AppFooter',
   data() {
     return {}
-  },
-  mounted() {
-    console.log(this.$config.APP_NAME)
   },
 }
 </script>

@@ -1,0 +1,20 @@
+# https://zenn.dev/masibw/articles/57a47a7381b9b3#.dockerignore%E3%81%AE%E6%8C%87%E5%AE%9A
+# docker-compose
+docker-compose.*.yml
+
+# environment
+.env
+
+# git
+.git/
+.gitignore
+
+# log
+
+
+# nuxt
+.nuxt
+node_modules/*
+
+# vscode settings
+.vscode/

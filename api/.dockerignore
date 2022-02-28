@@ -1,0 +1,15 @@
+# https://gist.github.com/yizeng/eeeb48d6823801061791cc5581f7e1fc
+# https://github.com/spesnova/docker-example-rails/blob/master/.dockerignore
+.bundle
+.git
+.gitignore
+.rspec
+config/initializers/secret_token.rb
+config/master.key
+coverage/*
+log/*
+public/system
+README.md
+spec/tmp
+tmp/*
+vendor/bundle
