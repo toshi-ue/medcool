@@ -19,6 +19,7 @@ services:
       - "./api:/$WORKDIR"
     depends_on:
       - db
+      - redis
     ports:
       - "$API_PORT:$CONTAINER_PORT"
     tty: true
@@ -56,6 +57,13 @@ services:
     depends_on:
       - api
 
+  redis:
+    image: redis:6.2.6
+    command: redis-server --appendonly yes
+    ports:
+      - "$REDIS_PORT:$REDIS_PORT"
+    volumes:
+      - redis:/data
 volumes:
   medcool-mysql-data:
     driver: local
@@ -63,3 +71,4 @@ volumes:
     driver: local
   # yarn-cache:
   #   driver: local
+  redis:
