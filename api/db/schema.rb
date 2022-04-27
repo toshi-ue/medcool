@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_202256) do
+ActiveRecord::Schema.define(version: 2022_04_27_060311) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "nickname", null: false
+    t.string "nickname"
     t.string "email", null: false
-    t.string "avatar_url", null: false
+    t.string "avatar_url"
     t.string "uid", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
