@@ -1,6 +1,7 @@
 # common
 .env
 .vscode
+.DS_Store
 
 # nuxtjs
 front/logs
@@ -35,6 +36,7 @@ front/dist
 # rails
 # See https://help.github.com/articles/ignoring-files for more about ignoring /.bundle
 .ruby-version
+api/.ash_history
 api/.bundle
 api/.cache
 api/config/master.key
