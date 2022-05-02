@@ -138,8 +138,8 @@ AllCops:
 # #   Exclude:
 # #     - spec/routing/**/*
 
-# RSpec/FilePath:
-#   Enabled: false
+RSpec/FilePath:
+  Enabled: false
 
 # # Style/ClassAndModuleChildren:
 # #   Exclude:
