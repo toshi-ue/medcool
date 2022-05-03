@@ -1,9 +1,15 @@
+# frozen_string_literal: true
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
-ENV['RAILS_ENV'] ||= 'test'
+# circleciにrubocop, rspecのテストを書く時に修正する
+# [docker環境でrspecで403エラーが出た時の解決](https://zenn.dev/akhmgc/articles/5fa1ed2bc018e4)
+# ENV['RAILS_ENV'] ||= 'test'
+ENV['RAILS_ENV'] = 'test'
+
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -32,7 +38,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

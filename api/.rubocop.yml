@@ -138,7 +138,13 @@ AllCops:
 # #   Exclude:
 # #     - spec/routing/**/*
 
+RSpec/ContextWording:
+  Enabled: false
+
 RSpec/FilePath:
+  Enabled: false
+
+RSpec/LetSetup:
   Enabled: false
 
 # # Style/ClassAndModuleChildren:
