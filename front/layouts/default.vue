@@ -43,6 +43,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
+      <app-toaster />
       <v-container>
         <Nuxt />
       </v-container>
