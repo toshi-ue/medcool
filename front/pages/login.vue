@@ -59,7 +59,6 @@
                 </v-card>
               </v-col>
             </v-row>
-            <v-divider class="my-8" />
           </v-col>
         </v-row>
       </v-col>
@@ -69,8 +68,7 @@
 
 <script>
 export default {
-  // layout: 'signin',
-  name: 'S2Login',
+  name: 'Login',
   data() {
     return {
       tab: null,
@@ -89,19 +87,28 @@ export default {
         .then((userCredential) => {
           const user = userCredential.user
           const { email, uid } = user
-          console.log({ email, uid })
           this.$store.dispatch('auth/setUser', { email, uid })
+          this.$router.push({
+            name: 'sample',
+          })
+          this.$store.dispatch('common/getToast', {
+            msg: 'ログインしました',
+            color: 'success',
+          })
           this.$router.push({
             name: 'sample',
           })
         })
         .catch((error) => {
-          console.log('error:', error)
-          console.log('error code:', error.code)
-          console.log('error message:', error.message)
-          // TODO: エラーメッセージを追加する
-          // TODO: フラッシュメッセージを表示させる
-          // auth/email-already-in-use
+          // console.log('error:', error)
+          // console.log('error code:', error.code)
+          // console.log('error message:', error.message)
+          const msg = this.$getFirebaseErrorMessage(this.email, error.code)
+          this.$store.dispatch('common/getToast', {
+            msg,
+            color: 'error',
+            timeout: -1,
+          })
         })
     },
   },
