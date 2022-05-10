@@ -17,8 +17,9 @@ AllCops:
     - db/schema.rb
     - Gemfile.lock
     - node_modules/**/*
-    - vendor/**/*
+    - test/**/*
     - tmp/**/*
+    - vendor/**/*
     - .git/**/*
   # TargetRailsVersion: ~
 
@@ -36,7 +37,9 @@ AllCops:
 
 # Metrics:
 #   Enabled: true
-
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
 # Naming:
 #   Enabled: true
 
@@ -90,53 +93,12 @@ AllCops:
 # #   Exclude:
 # #     - 'Gemfile.lock'
 
-# # Naming/PredicateName:
-# #   Exclude:
-# #     - 'spec/**/*'
+Naming/FileName:
+  Exclude:
+    - Rakefile
 
-# # Rails/ContentTag:
-# #   Exclude:
-# #     - app/models/**/*.rb
-
-# # Rails/CreateTableWithTimestamps:
-# #   Exclude:
-# #     - db/migrate/*_create_active_storage_tables.active_storage.rb
-
-# # Rails/EnvironmentVariableAccess:
-# #   Exclude:
-# #     - lib/**/*.rake
-
-# # Rails/Exit:
-# #   Exclude:
-# #     - lib/**/*.rake
-
-# # Rails/RakeEnvironment:
-# #   Exclude:
-# #     - 'lib/capistrano/tasks/**/*.rake'
-
-# # Rails/TimeZone:
-# #   Exclude:
-# #     - '**/*.gemspec'
-
-# # RSpec/BeforeAfterAll:
-# #   Exclude:
-# #     - spec/spec_helper.rb
-# #     - spec/rails_helper.rb
-# #     - spec/support/**/*.rb
-
-# # RSpec/DescribeClass:
-# #   Description: Check that the first argument to the top-level describe is a constant.
-# #   Enabled: true
-# #   Exclude:
-# #     - "**/spec/features/**/*"
-# #     - "**/spec/requests/**/*"
-# #     - "**/spec/routing/**/*"
-# #     - "**/spec/system/**/*"
-# #     - "**/spec/views/**/*"
-
-# # RSpec/ExpectActual:
-# #   Exclude:
-# #     - spec/routing/**/*
+Rails/BulkChangeTable:
+  Enabled: false
 
 RSpec/ContextWording:
   Enabled: false
@@ -147,10 +109,8 @@ RSpec/FilePath:
 RSpec/LetSetup:
   Enabled: false
 
-# # Style/ClassAndModuleChildren:
-# #   Exclude:
-# #     - 'test/channels/application_cable/connection_test.rb'
-# #     - 'test/test_helper.rb'
+RSpec/NestedGroups:
+  Max: 4
 
 Style/Documentation:
   Enabled: false
@@ -159,26 +119,18 @@ Style/Documentation:
 # #     - 'test/**/*'
 # # - 'config/application.rb'
 
-# # Style/DocumentationMethod:
-# #   Exclude:
-# #     - 'spec/**/*'
-# #     - 'test/**/*'
+# 以下URLを参考に設定
+# https://teratail.com/questions/74592
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - config/**/*
+    - db/migrate/*
+    - spec/**/*
 
-# # Style/GlobalStdStream:
-# #   Exclude:
-# #     - 'config/environments/production.rb'
+Style/GlobalStdStream:
+  # Enabled: false
+  Exclude:
+    - config/environments/production.rb
 
-# # Style/IpAddresses:
-# #   Exclude:
-# #     - '**/*.gemfile'
-# #     - '**/Gemfile'
-# #     - '**/gems.rb'
-# #     - '**/*.gemspec'
-
-# # Style/NumericPredicate:
-# #   Exclude:
-# #     - 'spec/**/*'
-
-# # Style/RedundantFetchBlock:
-# #   Exclude:
-# #     - 'config/puma.rb'
+Style/RedundantFetchBlock:
+  Enabled: false
