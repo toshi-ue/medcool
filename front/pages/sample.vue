@@ -30,19 +30,28 @@ export default {
   middleware: 'authenticated',
   methods: {
     async signOut() {
-      await this.$fire
-        .signOut(this.$fire.auth)
+      await this.$store
+        .dispatch('auth/signOut')
         .then(() => {
           this.$store.dispatch('auth/setUser', null)
+          this.$store.dispatch('common/getToast', {
+            msg: 'ログアウトしました',
+            color: 'success',
+          })
           this.$router.push({
             name: 'login',
           })
         })
         .catch((error) => {
-          console.log('error:', error)
-          // TODO: エラーメッセージを追加する
-          // TODO: フラッシュメッセージを表示させる
-          // auth/email-already-in-use
+          const msg = this.$getFirebaseErrorMessage(
+            this.$store.state.auth.currentUser.email,
+            error.code
+          )
+          this.$store.dispatch('common/getToast', {
+            msg,
+            color: 'error',
+            timeout: -1,
+          })
         })
     },
   },

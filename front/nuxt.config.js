@@ -29,6 +29,7 @@ export default {
     '@/plugins/axios',
     '@/plugins/firebase',
     '@/plugins/firebase.authentication',
+    '@/plugins/utils',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -102,10 +103,11 @@ export default {
       // }
     },
   },
+  // [Nuxt - The vue.config Property](https://nuxtjs.org/docs/configuration-glossary/configuration-vue-config/)
   vue: {
     config: {
-      productionTip: false,
-      devtools: true,
+      // productionTip: false,
+      // devtools: true,
     },
   },
 }

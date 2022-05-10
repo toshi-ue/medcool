@@ -13,7 +13,6 @@ export const getters = {
 
 export const mutations = {
   setUser(state, payload) {
-    console.log('payload:', payload)
     state.currentUser = payload
   },
 }
@@ -22,5 +21,15 @@ export const mutations = {
 export const actions = {
   setUser({ commit }, data) {
     commit('setUser', data)
+  },
+  signUp({ commit }, { email, password }) {
+    return this.$fire.createUserWithEmailAndPassword(
+      this.$fire.auth,
+      email,
+      password
+    )
+  },
+  signOut() {
+    return this.$fire.signOut(this.$fire.auth)
   },
 }

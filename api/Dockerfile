@@ -2,13 +2,13 @@ FROM ruby:3.0.3-alpine
 ARG DEV_PACKAGES="build-base curl-dev"
 ARG WITHOUT_RAILS_ENV
 ARG JOBS_NUMBER
-ARG RUNTIME_PACKAGES="nodejs mariadb-dev tzdata git"
+ARG RUNTIME_PACKAGES="git make mariadb-dev nodejs tzdata"
 ARG WORKDIR
 
 ENV HOME=/${WORKDIR} \
   LANG=C.UTF-8 \
   TZ=Asia/Tokyo \
-  MY_BUNDLER_VERSION=2.3.4
+  MY_BUNDLER_VERSION=2.3.12
 
 WORKDIR ${HOME}
 

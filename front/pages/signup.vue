@@ -22,26 +22,36 @@
               <v-col sm="12">
                 <v-card flat>
                   <v-card-text class="pa-0">
-                    <v-form
-                      ref="register_form"
-                      v-model="register_valid"
-                      lazy-validation
-                    >
+                    <!--
+                      lazy-validation を付加すると validationが通ってしまい初期画面でボタンが有効になってしまう
+                      [v-form API — Vuetify](https://vuetifyjs.com/en/api/v-form/)
+                      -->
+                    <v-form ref="form" v-model="isValid">
+                      <!-- TODO: nicknameを追加できるようにする -->
+                      <!-- <v-text-field
+                        v-model="nickname"
+                        label="ニックネーム"
+                        required
+                        validate-on-blur
+                      /> -->
                       <v-text-field
                         v-model="email"
                         label="メールアドレス"
                         required
-                        validate-on-blur
+                        :rules="[rules.required, rules.email]"
                       />
 
                       <v-text-field
-                        ref="register_password"
                         v-model="password"
                         label="パスワード"
+                        clearable
+                        counter
+                        hint="6文字以上の英数字"
+                        minlength="10"
                         required
+                        :rules="[rules.required, rules.min]"
                         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                         :type="showPassword ? 'text' : 'password'"
-                        validate-on-blur
                         @click:append="showPassword = !showPassword"
                       >
                         <!-- <template v-slot:progress>
@@ -56,10 +66,16 @@
                       <v-text-field
                         v-model="passwordConfirmation"
                         label="パスワード（確認）"
+                        clearable
+                        counter
                         required
                         :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                        :rules="[
+                          rules.required,
+                          rules.matchPassword,
+                          rules.min,
+                        ]"
                         :type="showPassword ? 'text' : 'password'"
-                        validate-on-blur
                         @click:append="showPassword = !showPassword"
                       />
 
@@ -68,7 +84,9 @@
                       </v-alert>
 
                       <v-btn
-                        :disabled="!register_valid"
+                        :disabled="!isValid || loading"
+                        :loading="loading"
+                        block
                         color="blue darken-3"
                         class="mr-4 white--text"
                         @click="signUp"
@@ -80,7 +98,7 @@
                 </v-card>
               </v-col>
             </v-row>
-            <v-divider class="my-8" />
+            <!-- <v-divider class="my-8" /> -->
           </v-col>
         </v-row>
       </v-col>
@@ -89,44 +107,106 @@
 </template>
 
 <script>
+// validate-on-blur
+//
+// :disabled="!isValid || loading"
 export default {
-  name: 'S2Signup',
-  // layout: 'sampleSignUp',
+  name: 'Signup',
   data() {
     return {
       registerErrorMsg: '',
       tab: null,
-      register_valid: true,
+      // nickname: '',
+      isValid: false,
       email: '',
+      loading: false,
       password: '',
       passwordConfirmation: '',
+      rules: {
+        email: (value) => {
+          const pattern =
+            /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]+.[A-Za-z0-9]+$/
+          return pattern.test(value) || 'メールアドレスの形式が正しくありません'
+        },
+        matchPassword: (value) =>
+          value === this.password || 'パスワードと一致していません',
+        min: (value) =>
+          (value && value.length >= 6) || '6文字以上の英数字が必須です',
+        required: (value) => !!value || `入力必須です`,
+      },
       showPassword: false,
     }
   },
   methods: {
-    async signUp() {
-      await this.$fire
-        .createUserWithEmailAndPassword(
-          this.$fire.auth,
-          this.email,
-          this.password
-        )
+    async signUp(context) {
+      this.loading = true
+
+      await this.$store
+        .dispatch('auth/signUp', {
+          email: this.email,
+          password: this.password,
+        })
         .then((userCredential) => {
           const user = userCredential.user
-          console.log('user:', user)
-          const { email, uid } = user
-          this.$store.dispatch('auth/setUser', { email, uid })
-          this.$router.push({
-            name: 'sample',
+          const token = userCredential.user.accessToken
+          this.$axios.setToken(token, 'Bearer')
+
+          this.$store.dispatch('auth/setUser', {
+            // TODO: nicknameを追加する
+            // displayName: this.nickname,
+            email: this.email,
+            uid: user.uid,
           })
+
+          const params = { email: this.email, uid: user.uid }
+          this.$axios
+            .$post('api/v1/users/registrations', params)
+            .then((res) => {
+              console.log(res)
+
+              this.$store.dispatch('common/getToast', {
+                msg: '登録しました',
+                color: 'success',
+              })
+              this.$router.push({
+                name: 'sample',
+              })
+            })
+            .catch((error) => {
+              // console.log('error code:', error.message)
+              // console.log('error.response:', error.response)
+              // console.log('error.response.data:', error.response.data)
+              // console.log(this.$fire.auth.currentUser)
+              this.$fire
+                .deleteUser(this.$fire.auth.currentUser)
+                .then((res) => {})
+                .catch((error) => {
+                  console.log(error)
+                })
+
+              this.$store.dispatch('common/getToast', {
+                msg: error.response.data,
+                timeout: -1,
+              })
+            })
+            .finally(() => {
+              this.loading = false
+            })
         })
         .catch((error) => {
-          console.log('error:', error)
-          console.log('error code:', error.code)
-          console.log('error message:', error.message)
-          // TODO: エラーメッセージを追加する
-          // TODO: フラッシュメッセージを表示させる
-          // auth/email-already-in-use
+          console.log('error2:', error)
+          console.log('error.code', error.code)
+
+          const msg = this.$getFirebaseErrorMessage(this.email, error.code)
+          console.log(msg)
+          this.$store.dispatch('common/getToast', {
+            msg,
+            color: 'error',
+            timeout: -1,
+          })
+        })
+        .finally(() => {
+          this.loading = false
         })
     },
   },

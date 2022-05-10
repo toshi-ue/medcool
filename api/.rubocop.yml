@@ -10,170 +10,127 @@ require:
   - rubocop-rspec
 
 AllCops:
-  DisabledByDefault: true
+  TargetRailsVersion: 3.0.3
+  # DisabledByDefault: true
+  NewCops: enable
   Exclude:
-    # - bin/*
     - db/schema.rb
     - Gemfile.lock
     - node_modules/**/*
-    - vendor/**/*
+    - test/**/*
     - tmp/**/*
+    - vendor/**/*
     - .git/**/*
-  NewCops: enable
   # TargetRailsVersion: ~
-  TargetRailsVersion: 3.0.3
 
-Bundler:
-  Enabled: true
-
-Gemspec:
-  Enabled: true
-
-Layout:
-  Enabled: true
-
-Lint:
-  Enabled: true
-
-Metrics:
-  Enabled: true
-
-Naming:
-  Enabled: true
-
-Performance:
-  Enabled: true
-
-Rails:
-  Enabled: true
-
-RSpec:
-  Enabled: true
-
-Security:
-  Enabled: true
-
-Style:
-  Enabled: true
-
-Style/ClassAndModuleChildren:
-  EnforcedStyle: 'compact'
-  # Exclude:
-  #   - 'app/controllers/**/*.rb'
-# Excluded Files
-# Layout/EmptyLines:
-#   Exclude:
-#     - 'config/environments/development.rb'
-
-# Layout/EmptyLinesAroundBlockBody:
-#   Exclude:
-#     - 'db/schema.rb'
-
-# Layout/ExtraSpacing:
-#   Exclude:
-#     - 'config/environments/production.rb'
-
-# Layout/SpaceAroundOperators:
-#   Exclude:
-#     - 'config/environments/production.rb'
-
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Exclude:
-#     - 'config/environments/production.rb'
-
-# Layout/SpaceInsidePercentLiteralDelimiters:
-#   Exclude:
-#     - 'Gemfile'
-
-# Lint/Syntax は false, Exclude の対象にしてはいけない
-# doc: https://docs.rubocop.org/rubocop/configuration.html#:~:text=non%2Dzero%20value.-,There%20is%20one%20exception%20from%20the%20general%20rule%20above%20and%20that%20is%20Lint/Syntax,-%2C%20a%20special%20cop
-# Lint/Syntax:
-#   Exclude:
-#     - 'Gemfile.lock'
-
-# Naming/PredicateName:
-#   Exclude:
-#     - 'spec/**/*'
-
-# Rails/ContentTag:
-#   Exclude:
-#     - app/models/**/*.rb
-
-# Rails/CreateTableWithTimestamps:
-#   Exclude:
-#     - db/migrate/*_create_active_storage_tables.active_storage.rb
-
-# Rails/EnvironmentVariableAccess:
-#   Exclude:
-#     - lib/**/*.rake
-
-# Rails/Exit:
-#   Exclude:
-#     - lib/**/*.rake
-
-# Rails/RakeEnvironment:
-#   Exclude:
-#     - 'lib/capistrano/tasks/**/*.rake'
-
-# Rails/TimeZone:
-#   Exclude:
-#     - '**/*.gemspec'
-
-# RSpec/BeforeAfterAll:
-#   Exclude:
-#     - spec/spec_helper.rb
-#     - spec/rails_helper.rb
-#     - spec/support/**/*.rb
-
-# RSpec/DescribeClass:
-#   Description: Check that the first argument to the top-level describe is a constant.
+# Bundler:
 #   Enabled: true
-#   Exclude:
-#     - "**/spec/features/**/*"
-#     - "**/spec/requests/**/*"
-#     - "**/spec/routing/**/*"
-#     - "**/spec/system/**/*"
-#     - "**/spec/views/**/*"
 
-# RSpec/ExpectActual:
-#   Exclude:
-#     - spec/routing/**/*
+# Gemspec:
+#   Enabled: true
+
+# Layout:
+#   Enabled: true
+
+# Lint:
+#   Enabled: true
+
+# Metrics:
+#   Enabled: true
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+# Naming:
+#   Enabled: true
+
+# Performance:
+#   Enabled: true
+
+# Rails:
+#   Enabled: true
+
+# RSpec:
+#   Enabled: true
+
+# Security:
+#   Enabled: true
+
+# Style:
+#   Enabled: true
+
+# Style/ClassAndModuleChildren:
+#   EnforcedStyle: "compact"
+#   # Exclude:
+#   #   - 'app/controllers/**/*.rb'
+# # Excluded Files
+# # Layout/EmptyLines:
+# #   Exclude:
+# #     - 'config/environments/development.rb'
+
+# # Layout/EmptyLinesAroundBlockBody:
+# #   Exclude:
+# #     - 'db/schema.rb'
+
+# # Layout/ExtraSpacing:
+# #   Exclude:
+# #     - 'config/environments/production.rb'
+
+# # Layout/SpaceAroundOperators:
+# #   Exclude:
+# #     - 'config/environments/production.rb'
+
+# # Layout/SpaceInsideArrayLiteralBrackets:
+# #   Exclude:
+# #     - 'config/environments/production.rb'
+
+# # Layout/SpaceInsidePercentLiteralDelimiters:
+# #   Exclude:
+# #     - 'Gemfile'
+
+# # Lint/Syntax は false, Exclude の対象にしてはいけない
+# # doc: https://docs.rubocop.org/rubocop/configuration.html#:~:text=non%2Dzero%20value.-,There%20is%20one%20exception%20from%20the%20general%20rule%20above%20and%20that%20is%20Lint/Syntax,-%2C%20a%20special%20cop
+# # Lint/Syntax:
+# #   Exclude:
+# #     - 'Gemfile.lock'
+
+Naming/FileName:
+  Exclude:
+    - Rakefile
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
 
 RSpec/FilePath:
   Enabled: false
 
-# Style/ClassAndModuleChildren:
-#   Exclude:
-#     - 'test/channels/application_cable/connection_test.rb'
-#     - 'test/test_helper.rb'
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4
 
 Style/Documentation:
   Enabled: false
-  # Exclude:
-#     - 'spec/**/*'
-#     - 'test/**/*'
-    # - 'config/application.rb'
+#   # Exclude:
+# #     - 'spec/**/*'
+# #     - 'test/**/*'
+# # - 'config/application.rb'
 
-# Style/DocumentationMethod:
-#   Exclude:
-#     - 'spec/**/*'
-#     - 'test/**/*'
+# 以下URLを参考に設定
+# https://teratail.com/questions/74592
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - config/**/*
+    - db/migrate/*
+    - spec/**/*
 
-# Style/GlobalStdStream:
-#   Exclude:
-#     - 'config/environments/production.rb'
+Style/GlobalStdStream:
+  # Enabled: false
+  Exclude:
+    - config/environments/production.rb
 
-# Style/IpAddresses:
-#   Exclude:
-#     - '**/*.gemfile'
-#     - '**/Gemfile'
-#     - '**/gems.rb'
-#     - '**/*.gemspec'
-
-# Style/NumericPredicate:
-#   Exclude:
-#     - 'spec/**/*'
-
-# Style/RedundantFetchBlock:
-#   Exclude:
-#     - 'config/puma.rb'
+Style/RedundantFetchBlock:
+  Enabled: false
