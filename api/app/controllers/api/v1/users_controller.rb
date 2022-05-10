@@ -4,4 +4,4 @@ class Api::V1::UsersController < ApplicationController
     render json: 'Hello'
   end
 end
-rubocop:enable all
+# rubocop:enable all

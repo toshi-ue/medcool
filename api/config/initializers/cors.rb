@@ -10,7 +10,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # origins ENV['API_DOMAIN'] || '' と同じ意味
-    origins ENV.fetch('API_DOMAIN', nil) || ''
+    origins ENV.fetch('API_DOMAIN', '')
 
     resource '*',
              headers: :any,
