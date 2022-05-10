@@ -103,10 +103,11 @@ export default {
       // }
     },
   },
+  // [Nuxt - The vue.config Property](https://nuxtjs.org/docs/configuration-glossary/configuration-vue-config/)
   vue: {
     config: {
-      productionTip: false,
-      devtools: true,
+      // productionTip: false,
+      // devtools: true,
     },
   },
 }
