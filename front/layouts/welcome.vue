@@ -23,7 +23,7 @@ export default {
   width: 100%;
 }
 
-.img-woman {
+.img-responsive {
   max-width: 100%;
   height: auto;
 }
