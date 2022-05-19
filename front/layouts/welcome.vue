@@ -2,8 +2,8 @@
   <v-app>
     <v-main>
       <nuxt />
-      <WelcomeAppFooter />
     </v-main>
+    <WelcomeAppFooter />
   </v-app>
 </template>
 <script>
