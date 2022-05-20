@@ -21,6 +21,16 @@
         </div>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <button type="button" name="button" @click="getMsg">
+          RailsからAPIを取得する
+        </button>
+        <div v-for="(msg, i) in msgs" :key="i">
+          {{ msg }}
+        </div></v-col
+      >
+    </v-row>
   </v-container>
 </template>
 
@@ -28,6 +38,9 @@
 export default {
   name: 'S2Sample',
   middleware: 'authenticated',
+  data() {
+    return { msgs: [] }
+  },
   methods: {
     async signOut() {
       await this.$store
@@ -53,6 +66,11 @@ export default {
             timeout: -1,
           })
         })
+    },
+    async getMsg() {
+      await this.$axios.$get('api/v1/users').then((res) => {
+        this.msgs.push(res)
+      })
     },
   },
 }
