@@ -2,3 +2,19 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+.height-fullfilled {
+  height: 100vh;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.v-main__wrap {
+  min-height: 100vh;
+}
+
+.width-fullfilled {
+  width: 100%;
+}

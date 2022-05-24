@@ -7,5 +7,8 @@ module.exports = {
   ],
   // add your custom config here
   // https://stylelint.io/user-guide/configuration
-  rules: {},
+  rules: {
+    // [既存プロジェクトをStylelint v14にアップグレードするときに注意すべき点 – ブログの設置](https://flex-box.net/stylelint-v14/)
+    'selector-class-pattern': null,
+  },
 }

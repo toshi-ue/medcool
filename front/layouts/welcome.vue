@@ -14,17 +14,3 @@ export default {
   },
 }
 </script>
-<style>
-.height-fullfilled {
-  height: 100vh;
-}
-
-.width-fullfilled {
-  width: 100%;
-}
-
-.img-responsive {
-  max-width: 100%;
-  height: auto;
-}
-</style>

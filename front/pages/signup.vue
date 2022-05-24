@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <v-row justify="center">
-      <v-col sm="12" md="5">
+  <v-container class="height-fullfilled d-flex justify-center align-center">
+    <v-row>
+      <v-col cols="10" offset="1" sm="6" offset-sm="3" md="4" offset-md="4">
         <h2 class="text-center subtitle-1 font-weight-bold mb-2">
           メールアドレスで登録
         </h2>
@@ -17,7 +17,6 @@
               <v-tab to="/login">ログイン</v-tab>
               <v-tab to="/signup">アカウント登録</v-tab>
             </v-tabs>
-
             <v-row>
               <v-col sm="12">
                 <v-card flat>
@@ -40,7 +39,6 @@
                         required
                         :rules="[rules.required, rules.email]"
                       />
-
                       <v-text-field
                         v-model="password"
                         label="パスワード"
@@ -54,14 +52,6 @@
                         :type="showPassword ? 'text' : 'password'"
                         @click:append="showPassword = !showPassword"
                       >
-                        <!-- <template v-slot:progress>
-                          <v-progress-linear
-                            :value="score.value"
-                            :color="score.color"
-                            absolute
-                            height="2"
-                          />
-                        </template> -->
                       </v-text-field>
                       <v-text-field
                         v-model="passwordConfirmation"
@@ -78,11 +68,9 @@
                         :type="showPassword ? 'text' : 'password'"
                         @click:append="showPassword = !showPassword"
                       />
-
                       <v-alert v-if="registerErrorMsg" dense text type="error">
                         {{ registerErrorMsg }}
                       </v-alert>
-
                       <v-btn
                         :disabled="!isValid || loading"
                         :loading="loading"
@@ -98,7 +86,6 @@
                 </v-card>
               </v-col>
             </v-row>
-            <!-- <v-divider class="my-8" /> -->
           </v-col>
         </v-row>
       </v-col>
@@ -112,6 +99,7 @@
 // :disabled="!isValid || loading"
 export default {
   name: 'Signup',
+  layout: 'welcome',
   data() {
     return {
       registerErrorMsg: '',
@@ -212,3 +200,12 @@ export default {
   },
 }
 </script>
+<style scoped>
+/* .v-application--wrap {
+  min-height: 100vh;
+} */
+
+/* .v-main {
+  min-height: 100vh;
+} */
+</style>

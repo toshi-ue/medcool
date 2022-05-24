@@ -1,7 +1,7 @@
 <template>
-  <v-container>
-    <v-row class="justify-center">
-      <v-col sm="12" md="5">
+  <v-container class="height-fullfilled d-flex justify-center align-center">
+    <v-row>
+      <v-col cols="10" offset="1" sm="6" offset-sm="3" md="4" offset-md="4">
         <h2 class="text-center subtitle-1 font-weight-bold mb-2">
           メールアドレスでログイン
         </h2>
@@ -17,7 +17,6 @@
               <v-tab to="/login">ログイン</v-tab>
               <v-tab to="/signup">アカウント登録</v-tab>
             </v-tabs>
-
             <v-row>
               <v-col sm="12">
                 <v-card flat>
@@ -32,7 +31,6 @@
                         label="メールアドレス"
                         required
                       />
-
                       <v-text-field
                         v-model="password"
                         label="パスワード"
@@ -41,11 +39,9 @@
                         :type="showPassword ? 'text' : 'password'"
                         @click:append="showPassword = !showPassword"
                       />
-
                       <v-alert v-if="loginErrorMsg" dense text type="error">
                         {{ loginErrorMsg }}
                       </v-alert>
-
                       <v-btn
                         :disabled="!login_valid"
                         color="blue darken-3"
@@ -69,6 +65,7 @@
 <script>
 export default {
   name: 'Login',
+  layout: 'welcome',
   data() {
     return {
       tab: null,
